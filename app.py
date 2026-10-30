@@ -22,7 +22,23 @@ def recommend(movie):
         recommended_movies.append(movies.iloc[i[0]].title)
     return recommended_movies
 
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+import os
+import pickle
+import gdown
+
+FILE_ID = "13awgttkztE6fEYqZdw3wPbyTDYcdlMrL"
+FILE_PATH = "similarity.pkl"
+
+if not os.path.exists(FILE_PATH):
+    gdown.download(
+        id=FILE_ID,
+        output=FILE_PATH,
+        quiet=False
+    )
+
+with open(FILE_PATH, "rb") as file:
+    similarity = pickle.load(file)
+
 movies_dict = pickle.load(open("movies_dict.pkl", "rb"))
 movies = pd.DataFrame(movies_dict)
 
