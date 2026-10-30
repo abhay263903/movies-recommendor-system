@@ -12,14 +12,14 @@ def fetch_poster(movie_id):
 def recommend(movie):
     movie_index = movies[movies['title'] == movie].index[0]
     distance = similarity[movie_index]
-    movie_list = sorted(list(enumerate(similarity[0])), reverse=True, key=lambda x: x[1])[1:6]
+    movie_list = sorted(list(enumerate(distance)), reverse=True, key=lambda x: x[1])[1:6]
 
     recommended_movies = []
     for i in movie_list:
         movie_id = i[0]
         # facthing poster
 
-        recommended_movies.append(movies.iloc[i[0]].title)
+        recommended_movies.append(movies.iloc[movie_id].title)
     return recommended_movies
 
 import os
