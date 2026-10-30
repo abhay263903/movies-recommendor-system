@@ -45,7 +45,7 @@ movies = pd.DataFrame(movies_dict)
 st.title('Movie Recommender System')
 
 Selected_Movie_Name = st.selectbox(
-    "Select your movie name :", movies['title'].values )
+    "Select a movie you like", movies['title'].values )
 
 if st.button("RECOMMEND"):
     recommendations = recommend(Selected_Movie_Name)
